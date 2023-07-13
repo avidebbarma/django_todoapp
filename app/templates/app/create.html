@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+
+
+
+{%block content%}
+<a href="{% url "index" %}">Go back</a>
+
+<h1> The to do app</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    
+    {{todoapp.as_p}}
+
+    <input type="submit", value="submit">
+</form>
+
+
+{% endblock %}

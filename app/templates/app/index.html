@@ -1,0 +1,88 @@
+{% extends "main.html" %}
+
+
+
+{%block content%}
+
+<div class="header-bar">
+    <div>
+
+        {% if request.user.is_authenticated %}
+       <h1> Hello, {{request.user}}</h1>
+       <h3>You have {{number}} task{{number|pluralize:"s"}} remaining to be completed <h3>
+        {% endif %}
+
+        
+
+    </div>
+
+
+
+
+</div>
+
+
+
+<p><a href="{% url "index"   %}">Home</a></p>
+{% if request.user.is_authenticated %}
+<p><a href="{% url "logout"   %}">Logout</a></p>
+
+{% else %}
+
+
+<p><a href="{% url "login-register"   %}">Login</a></p>
+
+{% endif %}
+
+
+<p><a href="{% url "create-task"    %}">Create task</a></p>
+<div class="search-add-wrapper">
+<form style = "margin-top: 20px; margin-bottom: 50px;display:flex;">
+    <input type="search" name="search" placeholder="search tasks here">
+    <input type="submit" value="SEARCH">
+</form>
+
+</div>
+
+
+
+<div class ="task-items-wrapper">
+    {% for task in todoapp %}
+
+    <div class="task-wrapper">
+        {%if task.complete %}
+        <div class="task-title">
+            <div class="task-complete-icon"></div>
+            <i><s>>{{task.title}}</s></i>
+        </div>
+
+        <a  href="{% url "task" task.id %}">Edit</a>
+        <a class="delete-link" href="{% url "delete" task.id %}">&#215;</a>
+  
+
+          {% else %}
+        <div class="task-title">
+            <div class="task-incomplete-icon"></div>
+            {{task.title}}
+        </div>
+            <a  href="{% url "task" task.id %}">Edit</a>
+            <a class="delete-link" href="{% url "delete" task.id %}">&#215;</a>
+
+        
+
+    </div>
+
+        {% endif %}
+       
+      {% empty %}
+<h1>No tasks has been added</h1>
+
+      {% endfor %}
+
+
+</div>
+
+
+
+{% endblock %}
+
