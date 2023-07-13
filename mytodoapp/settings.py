@@ -131,9 +131,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 CSRF_TRUSTED_ORIGINS = ['https://web-production-addb.up.railway.app',
-                        'https://testabhijit.com',
-                        'http://testabhijit.com',]
+                        'https://testabhijit.one',
+                        'http://testabhijit.one',]
 CSRF_TRUSTED_ORIGINS = ['https://*.web-production-addb.up.railway.app',
-                        'https://*.testabhijit.com',
-                        'http://*.testabhijit.com',
+                        'https://*.testabhijit.one',
+                        'http://*.testabhijit.one',
                         ]
