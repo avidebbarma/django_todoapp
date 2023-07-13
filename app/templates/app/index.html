@@ -38,6 +38,7 @@
 <p><a href="{% url "create-task"    %}">Create task</a></p>
 <div class="search-add-wrapper">
 <form style = "margin-top: 20px; margin-bottom: 50px;display:flex;">
+    {% csrf_token %}
     <input type="search" name="search" placeholder="search tasks here">
     <input type="submit" value="SEARCH">
 </form>
